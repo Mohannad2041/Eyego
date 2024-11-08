@@ -1,0 +1,176 @@
+# API Documentation
+
+# Base URL
+All endpoints are accessed via the base URL:
+http://localhost:3000/api/v1
+# Authentication
+All protected routes require authentication via a **Bearer token** in the request header.
+
+
+# Endpoints
+
+# 1. **POST /auth/register**
+- **Description**: Registers a new user.
+- **Request Body**:
+    ```json
+    {
+        "name": "John Doe",  
+        "email": "user@example.com",
+        "password": "password123"
+    }
+    ```
+- **Response**:
+    ```json
+    { 
+        "user" :{...},
+        "token": "JWT_TOKEN",    
+        "message": "User successfully registered"
+    }
+    ```
+
+# 2. **POST /auth/login**
+- **Description**: Logs in an existing user and returns a JWT token.
+- **Request Body**:
+    ```json
+    {
+        "email": "user@example.com",
+        "password": "password123"
+    }
+    ```
+- **Response**:
+    ```json
+    {
+        "user": {...},
+        "token": "JWT_TOKEN"
+    }
+    ```
+
+# 3. **GET /tasks/getAllTasks**
+- **Description**: Fetches all tasks for the authenticated user.
+- **Headers**:
+    ```
+    Authorization: Bearer <JWT_TOKEN>
+    ```
+- **Response**:
+    ```json
+    {
+      "tasks": [
+        {
+            "taskName": "Dark Mode Feature",
+            "description": "Add a dark mode feature to the website with a responsive switch toggle.",
+            "isComplete": false
+        },
+        ...
+      ]
+    }
+    ```
+
+# 4. **GET /tasks/getTaskById/:id**
+- **Description**: Fetches a specific task using the id for the authenticated user.
+- **Headers**:
+    ```
+    Authorization: Bearer <JWT_TOKEN>
+    ```
+- **Response**:
+    ```json
+    {
+      "tasks": [
+        {
+            "taskName": "Dark Mode Feature",
+            "description": "Add a dark mode feature to the website with a responsive switch toggle.",
+            "isComplete": false
+        },
+        ...
+      ]
+    }
+    ```
+
+# 5. **POST /tasks/createTask**
+- **Description**: Creates a new task for the authenticated user , isComplete is false by default.
+- **Headers**:
+    ```
+    Authorization: Bearer <JWT_TOKEN>
+    ```
+- **Request Body**:
+    ```json
+    {
+        "taskName": "Dark Mode Feature",
+        "description": "Add a dark mode feature to the website with a responsive switch toggle.",
+    }
+    ```
+- **Response**:
+    ```json
+    {
+      "task": {
+        "taskName":"Dark Mode Feature",
+        "description": "Add a dark mode feature to the website with a responsive switch toggle.",
+        "isComplete": false
+      }
+    }
+    ```
+
+# 6. **PATCH /tasks/updateTask/:id**
+- **Description**: Updates an existing task by ID for the authenticated user.
+ - **Headers**:
+    ```
+    Authorization: Bearer <JWT_TOKEN>
+    ```
+- **Request Body**:
+    ```json
+    {
+        "taskName": "Updated task name",
+        "description": "Updated task description",
+        "isComplete": true
+    }
+    ```
+- **Response**:
+    ```json
+    {
+      "task": {
+        "taskName": "Updated task name",
+        "description": "Updated task description",
+        "isComplete": true
+      }
+    }
+    ```
+
+# 7. **DELETE /tasks/deleteTask/:id**
+- **Description**: Deletes a task by ID for the authenticated user.
+ - **Headers**:
+    ```
+    Authorization: Bearer <JWT_TOKEN>
+    ```
+- **Response**:
+    ```json
+    {
+      "message": "Task deleted successfully"
+    }
+    ```
+
+---
+
+# **Error Handling**
+
+Common errors returned by the API:
+
+- **400 Bad Request**: Missing or invalid data in the request body.
+- **401 Unauthorized**: Missing or invalid token.
+- **404 Not Found**: The requested resource could not be found.
+- **500 Internal Server Error**: An unexpected server error occurred.
+
+---
+
+# **Environment Variables**
+
+- **JWT_LIFETIME = 7d** - The duration for which the JWT token will be valid.
+- **JWT_SECRET = "e30d146e06255d0185075772a403a2d7505509bf8fdea7af63866b73b7455c6046f91602ddc0c990b167259e8813e875ac1e292dde2a3a52844e796c59493d63"** - The secret key used for generating and verifying JWT tokens.
+- **MONGO_URI=mongodb://localhost:27017/taskmanager** - The MongoDB connection string.
+- **PORT=3000** - The port number on which the server will run.
+
+- Copy paste to .env file.
+
+---
+
+
+
+
