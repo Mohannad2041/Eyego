@@ -1,9 +1,9 @@
 **Read me File**
-### Project Name: Task Manager API
+# Project Name: Task Manager API
 
 ## Setup Instructions
 
-# Tech Stack
+### Tech Stack
 - Backend: Node.js, Express
 - Database: MongoDB
 - Authentication: JWT (JSON Web Tokens)
@@ -20,7 +20,7 @@
 
 
 ---
-# Prerequisites
+### Prerequisites
 - Node.js (v14 or later)
 - MongoDB (local or cloud-based, e.g., MongoDB Atlas)
 - Postman (or any API testing tool)
