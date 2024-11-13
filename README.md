@@ -1,6 +1,3 @@
-# Eyego
-A simple Task Manager application
-
 **Read me File**
 # Project Name: Task Manager API
 
