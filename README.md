@@ -1,7 +1,7 @@
 **Read me File**
-# Project Name: Task Manager API
+### Project Name: Task Manager API
 
-# Setup Instructions
+## Setup Instructions
 
 # Tech Stack
 - Backend: Node.js, Express
